@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const Logo = require('./lib/writeLogo');
 const fs = require('fs');
+// const {writeFile} = require('fs');
 const { Triangle, Square, Circle } = require('./lib/generateColor');
 
 const generateLogoQuestions = () =>
@@ -61,7 +62,7 @@ const generateLogoQuestions = () =>
             const pLogoContent = new Logo(answers);
             console.log(answers);
 
-            writeFile('logo.svg', pLogoContent, (err) =>
+            fs.writeFile('logo.svg', logo.render(), (err) =>
                 err ? console.log(err) : console.log('Successfully created logo.svg!')
             );
         });
