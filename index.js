@@ -1,8 +1,7 @@
 
 const inquirer = require('inquirer');
-const fs = require('fs');
-const Logo = require('./utils/generateLogo');
-
+// const fs = require('fs');
+const { Triangle, Square, Circle } = require('./lib/generateColor');
 
 const generateLogoQuestions = () =>
     inquirer
@@ -18,12 +17,50 @@ const generateLogoQuestions = () =>
                 name: 'Color',
                 message: 'Please choose a logo color (Either, Color or Hexidecimal format)?',
             },
+            {
+                type: 'input',
+                name: 'Text',
+                message: 'Please choose Choose three Chracracters?',
+            },
+            {
+                type: 'input',
+                name: 'TextColor',
+                message: 'Please choose a logo color (Either, Color or Hexidecimal format)?',
+            },
         ])
         .then((answers) => {
-            const pLogoContent = Logo(answers);
+            let logo;
+
+            switch (answers.Shape) {
+                case 'Circle':
+                    logo = new Circle(answers.Shape, answers.Color);
+                    // console.log(data.Shape);
+                    // console.log(data.Color);
+                    // console.log(logo);
+                    break;
+                case 'Square':
+                    logo = new Square(answers.Shape, answers.Color);
+                    break;
+                case 'Triangle':
+                    logo = new Triangle(answers.Shape, answers.Color);
+                    break;
+                default:
+                    console.log('Shape not recognized');
+                    return;
+            }
 
 
-            fs.writeFile('logo.svg', pLogoContent, (err) =>
+            
+            // const shapeSqaure = new Square(`${data.Color}`);
+            // const shapeTriangle = new Triangle(`${data.Color}`);
+
+
+            // shapeCircle = new Logo(answers);
+
+            // const pLogoContent = new Logo(answers);
+            console.log(answers);
+
+            writeFile('logo.svg', pLogoContent, (err) =>
                 err ? console.log(err) : console.log('Successfully created logo.svg!')
             );
         });
@@ -35,3 +72,5 @@ function init() {
 
 // Function call to initialize app
 init();
+
+// module.exports = generateLogoQuestions;
