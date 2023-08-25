@@ -35,23 +35,23 @@ const generateLogoQuestions = () =>
 
             switch (answers.Shape) {
                 case 'Circle':
-                    logo = new Circle(answers.Shape, answers.Color);
+                    logo = new Circle();
                     // console.log(data.Shape);
                     // console.log(data.Color);
                     // console.log(logo);
                     break;
                 case 'Square':
-                    logo = new Square(answers.Shape, answers.Color);
+                    logo = new Square();
                     break;
                 case 'Triangle':
-                    logo = new Triangle(answers.Shape, answers.Color);
+                    logo = new Triangle();
                     break;
                 default:
                     console.log('Shape not recognized');
                     return;
             }
 
-
+logo.setColor(answers.Color);
             
             // const shapeSqaure = new Square(`${data.Color}`);
             // const shapeTriangle = new Triangle(`${data.Color}`);
@@ -59,10 +59,13 @@ const generateLogoQuestions = () =>
 
             // shapeCircle = new Logo(answers);
 
-            const pLogoContent = new Logo(answers);
+            const pLogoContent = new Logo();
+            pLogoContent.setText(answers.Text, answers.TextColor);
+            pLogoContent.setShape(logo);
+
             console.log(answers);
 
-            fs.writeFile('logo.svg', logo.render(), (err) =>
+            fs.writeFile('logo.svg', pLogoContent.render(), (err) =>
                 err ? console.log(err) : console.log('Successfully created logo.svg!')
             );
         });
