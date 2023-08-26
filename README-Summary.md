@@ -1,5 +1,12 @@
 BOGO-LOGO
 
+Video
+https://youtu.be/7vk2tXoEDqg
+
+Github Repo
+https://github.com/eecmanny/Bogo-logo/
+
+
 A Simple generated logo that can be created though the command-lines. It will lets the user select their logo's shape, color, 3 character text, and text color, so that the user doesn't have to pay a graphic designer to create one.
 
 Need to use Jest and Inquire packages. I recieved help from TA and BSC/
