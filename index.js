@@ -22,7 +22,7 @@ const generateLogoQuestions = () =>
             {
                 type: 'input',
                 name: 'Text',
-                message: 'Please choose Choose three Chracracters?',
+                message: 'Please choose Choose three Characters?',
             },
             {
                 type: 'input',
