@@ -53,11 +53,7 @@ const generateLogoQuestions = () =>
 
 logo.setColor(answers.Color);
             
-            // const shapeSqaure = new Square(`${data.Color}`);
-            // const shapeTriangle = new Triangle(`${data.Color}`);
 
-
-            // shapeCircle = new Logo(answers);
 
             const pLogoContent = new Logo();
             pLogoContent.setText(answers.Text, answers.TextColor);
@@ -66,7 +62,7 @@ logo.setColor(answers.Color);
             console.log(answers);
 
             fs.writeFile('logo.svg', pLogoContent.render(), (err) =>
-                err ? console.log(err) : console.log('Successfully created logo.svg!')
+                err ? console.log(err) : console.log('Successfully Generated logo.svg!')
             );
         });
 
@@ -75,7 +71,6 @@ function init() {
     generateLogoQuestions();
 };
 
-// Function call to initialize app
+
 init();
 
-// module.exports = generateLogoQuestions;
